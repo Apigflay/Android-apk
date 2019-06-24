@@ -1,5 +1,13 @@
 <template>
-
+<div class="box">
+  1111
+  <div class="box1">
+    2222
+    <div class="box2">
+3333
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -14,7 +22,16 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
+.box{
+  color: red;
+  .box1{
+    color: green;
+    .box2{
+        color: purple;
+    }
+  }
+}
 h1, h2 {
   font-weight: normal;
 }
