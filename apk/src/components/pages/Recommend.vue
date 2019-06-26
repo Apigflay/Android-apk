@@ -81,17 +81,25 @@
     width:100%;
     height: 100%;
     .main{
+        width:9.8rem;
+        margin:auto;
       .swiper_area{
-        // width:680px;
-        width:90%;
-        height: 256px;
+        width:9.8rem;
+        height: 3.68rem;
         margin: auto;
+        border-radius:0.15rem;
+        .nut-swiper{
+            width:9.8rem;
+        height: 3.68rem;
+        }
         img{
-          width: 100%;
+          width: 9.8rem;
+          height: 3.38rem;
+          border-radius:0.15rem;
         }
       }
       .test{
-        width:750px;
+        width:9.8rem;
         background: #000;
       }
     }  
