@@ -5,7 +5,9 @@
          <div class="circle">{{msg}}</div>
     </div>
     <div class="tab">
-      <em :class="index==activityId?'active noActivity':'noActivity'" v-for="(item,index) in textData" :key="index" @click="goSwich" @touchstart="getStartStatus" @touchend="getEndStatus" :id="index">{{item}}</em>
+      <em :class="activityBg==true&&index==activityBgId?'activityBg':'noActivityBg'" v-for="(item,index) in textData" :key="index"@click="goSwich" @touchstart="getStartStatus" @touchend="getEndStatus" :id="index">
+        <em :class="index==activityId?'active noActivity':'noActivity'" >{{item}}</em>
+      </em>
     </div>
     <div class="search">
         <nut-icon 
@@ -24,7 +26,9 @@ export default {
     return {
         textData:['我的','发现','朋友','视频'],//循环文字内容
         msg:7,//
-        activityId:1,//初始选中的
+        activityId:1,//初始选中的id
+        activityBgId:null,//背景选中id
+        activityBg:null,//touch背景颜色
     }
   },
   created() {
@@ -37,28 +41,26 @@ export default {
     
   },
   methods: {
-    goSwich:function(){
-      // alert('click')
+    goSwich:function(e){
+      this.activityId=e.currentTarget.id;
+      
     },
-    getStartStatus:function(){
-      // prompt(111)
+    getStartStatus:function(e){
+      this.activityBg=true;
+      this.activityBgId=e.currentTarget.id;
       this.msg=6;
     },
     getEndStatus:function(e){
-      // alert(222)
-      // console.log(e.target.id);
-      // console.log(e.currentTarget.id);
-      
-      this.activityId=e.currentTarget.id;
+      this.activityBg=false;
       this.msg=9;
     }
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .tab_bar{
+  user-select:none ;
   width:9.8rem;
   margin: auto;
   height: 2.1rem;
@@ -72,22 +74,49 @@ export default {
     display: flex;
     align-items:center;
     justify-content: space-between;
-    .noActivity{
+    .activityBg{
+      background:rgba($color: #000000, $alpha: 0.1);
       display:block;
-      height:1.46rem;
-      width:1.46rem;
+      height:1.3rem;
+      width:1.3rem;
       border-radius:50%;
-      // line-height: 2.1rem;
+      .noActivity{
+        display:block;
+        height:1.3rem;
+        width:1.3rem;
+        border-radius:50%;
+        line-height: 1.3rem;
+        text-align:center;
+      }
+      .active{
+        font-weight: 900;
+        font-size: 0.44rem;
+      }
     }
-    .active{
-      background:blue;
-      font-weight: 600;
-      font-size: 0.44rem;
+    .noActivityBg{
+        display:block;
+        height:1.3rem;
+        width:1.3rem;
+        border-radius:50%;
+      .noActivity{
+        display:block;
+        height:1.3rem;
+        width:1.3rem;
+        border-radius:50%;
+        line-height: 1.3rem;
+        text-align:center;
+      }
+      .active{
+        font-weight: 900;
+        font-size: 0.44rem;
+      }
     }
+    
   }
   .tip{
     position:absolute;
     height: 0.7rem;
+    width:0.5rem;
     left:0rem;
     top:0.7rem;
     .img{
@@ -98,11 +127,12 @@ export default {
       background: red;
       border-radius: 50%;
       height: 0.44rem;
-      line-height: 0.44rem;
+      color:#fff;
+      text-align:center;
       font-size: 0.3rem;
       width:0.44rem;
-      top:-0.10rem;
-      right:-0.20rem;
+      top:-0.20rem;
+      right:-0.44rem;
     }
   }
   .search{

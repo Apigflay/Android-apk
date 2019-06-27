@@ -13,11 +13,16 @@ import NutUI from '@nutui/nutui';  //NutUI  京东移动端框架
 import '@nutui/nutui/dist/nutui.css';
 NutUI.install(Vue);
 
+import VueAwesomeSwiper from 'vue-awesome-swiper';//swiper4
+import 'swiper/dist/css/swiper.css';
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
+// 以下是注册组件的方法
 import NavBar from './components/component/Nav.vue';
 import FooterBar from './components/component/Footer.vue';
 Vue.component("NavBar",NavBar); // 全局注册组件
 Vue.component("FooterBar",FooterBar); // 全局注册组件
-// 以下是注册组件的方法
+
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */

@@ -135,3 +135,18 @@ proxyTable: {
 prod:添加
 // API_ROOT: '""'   //线上请求前缀
   API_ROOT: '"http://47.99.201.159:9025"'   //线上请求前缀
+
+10 移动端长按复制文本
+当e.prenventDefault()无效时试试这个
+*{
+  -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+  -webkit-user-select:none; /*webkit浏览器*/
+  -khtml-user-select:none; /*早期浏览器*/
+  -moz-user-select:none; /*火狐*/
+  -ms-user-select:none;  /*IE10*/
+  user-select:none;
+}
+如果页面上有input框也会被禁止输入，记得加上这个
+input{
+  -webkit-user-select: auto;
+}
