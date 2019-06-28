@@ -150,3 +150,73 @@ prod:添加
 input{
   -webkit-user-select: auto;
 }
+
+11 项目中使用svg图片
+  1. 安装依赖：npm install svg-sprite-loader --save-dev
+  2. 配置build文件夹中的webpack.base.conf.js，主要在两个地方添加代码，如下所示
+    exclude: [resolve('src/icons')],       ------url-loader
+    {                                      ------svg-sprite-loader
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: [resolve('src/icons')],
+        options: {
+          symbolId: 'icon-[name]'
+        }
+    },
+  3. 在src/components/component下新建文件夹及文件Svg.vue中内容如下
+  <template>
+    <svg :class="svgClass" aria-hidden="true" v-on="$listeners">
+      <use :xlink:href="iconName"/>
+    </svg>
+  </template>
+  <script>
+  export default {
+    name: 'SvgIcon',
+    props: {
+      iconClass: {
+        type: String,
+        required: true
+      },
+      className: {
+        type: String,
+        default: ''
+      }
+    },
+    computed: {
+      iconName() {
+        return `#icon-${this.iconClass}`
+      },
+      svgClass() {
+        if (this.className) {
+          return 'svg-icon ' + this.className
+        } else {
+          return 'svg-icon'
+        }
+      }
+    }
+  }
+</script>
+  <style scoped>
+    /* .svg-icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    } */
+  </style>
+  4. 在src/assets下新建svgImg文件夹，及svgImg文件夹下svg文件夹、index.js文件， index.js文件内容如下
+  import Vue from 'vue'
+  import SvgIcon from '@/components/component/Svg.vue'// svg组件
+  
+  // register globally
+  Vue.component('svg-icon', SvgIcon)
+  
+  const req = require.context('./svg', false, /\.svg$/)
+  const requireAll = requireContext => requireContext.keys().map(requireContext)
+  requireAll(req)
+  5. 在main.js中引入svg
+  import './assets/svgImg'
+  6. 在页面使用
+  <svg-icon icon-class="test"></svg-icon>
+12

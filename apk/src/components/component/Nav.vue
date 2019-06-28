@@ -1,11 +1,11 @@
 <template>
 <div class="tab_bar">
     <div class="tip">
-         <img class="img" src="../../assets/imgs/sangeheng.png" alt="">
+         <img class="img" src="../../../static/imgs/sangeheng.png" alt="">
          <div class="circle">{{msg}}</div>
     </div>
     <div class="tab">
-      <em :class="activityBg==true&&index==activityBgId?'activityBg':'noActivityBg'" v-for="(item,index) in textData" :key="index"@click="goSwich" @touchstart="getStartStatus" @touchend="getEndStatus" :id="index">
+      <em :class="activityBg==true&&index==activityBgId?'activityBg':'noActivityBg'" v-for="(item,index) in textData" :key="index" @click="goSwich" @touchstart="getStartStatus" @touchend="getEndStatus" :id="index">
         <em :class="index==activityId?'active noActivity':'noActivity'" >{{item}}</em>
       </em>
     </div>
@@ -25,7 +25,7 @@ export default {
   data () {
     return {
         textData:['我的','发现','朋友','视频'],//循环文字内容
-        msg:7,//
+        msg:4,//
         activityId:1,//初始选中的id
         activityBgId:null,//背景选中id
         activityBg:null,//touch背景颜色
@@ -127,6 +127,7 @@ export default {
       background: red;
       border-radius: 50%;
       height: 0.44rem;
+      line-height: 0.5rem;
       color:#fff;
       text-align:center;
       font-size: 0.3rem;

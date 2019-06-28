@@ -23,7 +23,7 @@ import FooterBar from './components/component/Footer.vue';
 Vue.component("NavBar",NavBar); // 全局注册组件
 Vue.component("FooterBar",FooterBar); // 全局注册组件
 
-
+import './assets/svgImg'
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

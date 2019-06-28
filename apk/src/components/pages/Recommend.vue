@@ -13,21 +13,24 @@
             </div>
             <!-- list -->
             <div class="list_area">
-                <div class="per">
-                    <img src="" alt="">
-                    <p>每日推荐</p>
+                <div class="per" v-for="(item,index) in listData" :key=index>
+                    <svg-icon :icon-class="item.imgSrc"></svg-icon>
+                    <p>{{item.name}}</p>
                 </div>
-                <div class="per">
-
+            </div>
+        </div>
+        <!-- 推荐歌单 -->
+        <div class="songListArea_wrap">
+            <div class="songListArea">
+                <div class="title">
+                    <h6 class="h6">推荐歌单</h6>
+                    <div class="btn">歌单广场</div>
                 </div>
-                <div class="per">
-
-                </div>
-                <div class="per">
-
-                </div>
-                <div class="per">
-
+                <div class="songList">
+                    <div class="per" v-for="(item,index) in songData" :key="index">
+                        <img class="img" :src="item.imgSrc" alt="">
+                        <p class="p">{{item.info}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,6 +42,7 @@
     name: "productList",
     data() {
         return {
+            //swiper图片
             dataImgItem:[{
                       imgSrc:'http://p1.music.126.net/JEiPaJSxNRh3EGETVb2_Xg==/109951164176611426.jpg'
                   },
@@ -65,7 +69,7 @@
                   },
                   {
                       imgSrc:'http://p1.music.126.net/3Wv1zLgj8SYaEUyKtGMyEg==/109951164176066020.jpg'
-            }],//swiper图片
+            }],
             swiperOption: {
                 //是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
                 notNextTick: true,
@@ -91,7 +95,18 @@
                 clickable: true,
                 type: "bullets"
                 },
-            }
+            },
+            //列表图片文字
+            listData:[{name:'每日推荐',imgSrc:'meirituijian'},{name:'歌单',imgSrc:'yinlerenchuangjiangedan40'},{name:'排行榜',imgSrc:'paihangbang_2'},{name:'电台',imgSrc:'ziyuan'},{name:'直播',imgSrc:'zhibo_1'}],
+            // 歌单
+            songData:[
+                {info:'华语速爆新歌',num:'5亿',imgSrc:'../../../static/imgs/109951164141857357.jpg'},
+                {info:'听听歌，笑一笑，生活没什么大不了，你说呢',num:'245万',imgSrc:'../../../static/imgs/109951164145809973.jpg'},
+                {info:'薛之谦 李荣浩 陈奕迅 林俊杰 林宥嘉',num:'1109万',imgSrc:'../../../static/imgs/109951164146756014.jpg'},
+                {info:'力量训练有氧运动必备|持续就可以拥有劲爆身材',num:'2889万',imgSrc:'../../../static/imgs/109951164154280311.jpg'},
+                {info:'【古风】因为前奏爱上一首古风歌',num:'367万',imgSrc:'../../../static/imgs/109951164163755213.jpg'},
+                {info:'【战歌】极品电音X史诗',num:'290万',imgSrc:'../../../static/imgs/109951164170676885.jpg'},
+            ]
 
         }
     },
@@ -146,10 +161,6 @@
             }
         }
       }
-      .test{
-        width:9.8rem;
-        background: #000;
-      }
     } 
     //list列表
     .list_area{
@@ -162,12 +173,88 @@
         .per{
             height:1.94rem;
             width:1.4rem;
-            background:#cecece;
+            .svg-icon{
+                height: 1.32rem;
+                width:1.32rem;
+            }
+            p{
+                font-size: 0.34rem;
+            }
+        }
+    }
+    //推荐歌单
+    .songListArea_wrap{
+        width:10.8rem;
+        border-top:1px solid #cecece;
+        padding:0.54rem 0 1.2rem 0;
+        .songListArea{
+            height: 10.2rem;
+            width:9.8rem;
+            margin:auto;
+            .title{
+                height: 0.7rem;
+                width:100%;
+                display:flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom:0.26rem;
+                .h6{
+                    height: 0.7rem;
+                    width:2.3rem;
+                    font-size: 0.5rem;
+                    font-weight: 900;
+                    line-height: 0.7rem;
+                    text-align: left;
+                }
+                .btn{
+                    height: 0.68rem;
+                    width:2.06rem;
+                    border:1px solid #cecece;
+                    border-radius: 0.34rem;
+                    font-size: 0.3rem;
+                    line-height: 0.7rem;
+                    text-align: center;
+                }
+            }
+            .songList{
+                height: 9.24rem;
+                width: 9.8rem;
+                display:flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                .per{
+                    height: 4.26rem;
+                    width: 3.1rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    .img{
+                        width:3.1rem;
+                        height: 3.1rem;
+                    }
+                    .p{
+                        height:0.94rem;
+                        width:100%;
+                        font-size: 0.34rem;
+                        line-height: 0.49rem;
+                        text-align: left;
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                    }
+                }
+                
+            }
         }
     }
 }
-.content .main .swiper_area >>> .swiper-pagination-bullet-active{
+//穿透没有用的呀
+.swiper_area >>> .swiper-pagination-bullet-active{
     background:red!important;
 }
 </style>
 
+           
