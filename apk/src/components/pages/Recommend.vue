@@ -5,15 +5,15 @@
             <!-- SWIPER -->
             <div class="swiper_area" @touchstart="on_top_enter" @touchend="on_top_leave">
                  <swiper :options="swiperOption" ref="mySwiper">
-                    <swiper-slide v-for="(slide, index) in dataImgItem" :key="index">
-                        <img :src="slide.imgSrc" alt="">
+                    <swiper-slide v-for="(slide, index) in bannerItem" :key="index">
+                        <img :src="slide.picUrl" alt="">
                     </swiper-slide>
                     <div class="swiper-pagination" slot="pagination"></div>
                 </swiper>
             </div>
             <!-- list -->
             <div class="list_area">
-                <div class="per" v-for="(item,index) in listData" :key=index>
+                <div class="per" v-for="(item,index) in listData" :key=index :id='index' @click="goListPage">
                     <svg-icon :icon-class="item.imgSrc"></svg-icon>
                     <p>{{item.name}}</p>
                 </div>
@@ -30,6 +30,11 @@
                     <div class="per" v-for="(item,index) in songData" :key="index">
                         <img class="img" :src="item.imgSrc" alt="">
                         <p class="p">{{item.info}}</p>
+                        <div class="num">
+                            <svg-icon icon-class="zanting"></svg-icon>
+                            <em>{{item.num}}</em>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,7 +47,9 @@
     name: "productList",
     data() {
         return {
-            //swiper图片
+            //banner图片
+            bannerItem:[],
+            //swiper图片-test
             dataImgItem:[{
                       imgSrc:'http://p1.music.126.net/JEiPaJSxNRh3EGETVb2_Xg==/109951164176611426.jpg'
                   },
@@ -80,7 +87,7 @@
                 disableOnInteraction: false
                 },
                 //循环
-                loop: true,
+                loop: false,
                 //设定初始化时slide的索引
                 initialSlide: 0,
                 //滑动速度
@@ -111,7 +118,7 @@
         }
     },
     created() {
-       
+       this.getBannerData()
     },
     mounted() {
      
@@ -134,8 +141,38 @@
         },
         on_top_leave() {
             this.mySwiper.autoplay.start()
+        },
+        //轮播图
+        getBannerData:function(){
+            this.$axios({  
+                url: '/netease/banner',
+                method: 'get',
+            //params参数必写 , 如果没有参数传{}也可以
+                data:{ 
+                }
+            })
+            .then((res)=>{
+               this.bannerItem=res.data.data;
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        },
+        //列表页面
+        goListPage:function(e){
+            // console.log(e.currentTarget.id)
+            if(e.currentTarget.id==0){ 
+                this.$router.push({path:'/everyday'})
+            }else if(e.currentTarget.id==1){
+
+            }else if(e.currentTarget.id==2){
+
+            }else if(e.currentTarget.id==3){
+
+            }else if(e.currentTarget.id==4){
+
+            }
         }
-    
     }
 }
 </script>
@@ -184,6 +221,7 @@
     }
     //推荐歌单
     .songListArea_wrap{
+        margin: auto;
         width:10.8rem;
         border-top:1px solid #cecece;
         padding:0.54rem 0 1.2rem 0;
@@ -230,6 +268,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
+                    position: relative;
                     .img{
                         width:3.1rem;
                         height: 3.1rem;
@@ -245,13 +284,34 @@
                         -webkit-line-clamp: 2;
                         overflow: hidden;
                     }
+                    .num{
+                        height: 0.40rem;
+                        position:absolute;
+                        right:0.16rem;
+                        top:0.08rem; 
+                        // background:rgba($color: #000000, $alpha: 0.2);                                 
+                        .svg-icon{
+                            height: 0.40rem;
+                            width:0.40rem;
+                            vertical-align: top;
+                        }
+                        em{
+                            display:inline-block;
+                            font-size: 0.28rem;
+                            line-height: 0.50rem;
+                            color:#e6e6e6;
+                            height: 0.40rem; 
+                            vertical-align: top;
+                        }
+
+                    }
                 }
                 
             }
         }
     }
 }
-//穿透没有用的呀
+//穿透没有用的呀   ---->去全局写
 .swiper_area >>> .swiper-pagination-bullet-active{
     background:red!important;
 }

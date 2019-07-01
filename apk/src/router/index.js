@@ -7,6 +7,7 @@ import Router from 'vue-router'
 import Error from '@/components/pages/Error'  //错误页面
 import HelloWorld from '@/components/pages/HelloWorld' //helloworld
 import Recommend from '@/components/pages/Recommend'  //推荐页面
+import EveryDay from '@/components/pages/EveryDay'  //每日推荐页面
 Vue.use(Router)
 
 export default new Router({
@@ -17,36 +18,24 @@ export default new Router({
       component:Error
     },
     {
-      path: '/helloWorld',
+      path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
-      path: '/',//首页
+      path: '/',//首页--每日推荐
       name: 'Recommend',
       component: Recommend,
+      meta:{
+      }
     },
-    // {
-    //   path: '/',
-    //   name: 'HelloWorld',
-    //   children:[{
-    //     path:'nav',
-    //     nav:Nav,
-    //   },{
-    //     path:'footer',
-    //     footer:Footer,
-    //   }]
-    // },
-    // {
-    //   path: '/recommend',//推荐
-    //   name: 'Recommend',
-    //   components:{
-    //     'nav':Nav,
-    //     'main':Recommend,
-    //     'footer':Footer
-    //   },
-    //   meta:{
-    //   }
-    // },
+    {
+      path: '/everyday',//每日推荐
+      name: 'EveryDay',
+      component: EveryDay,
+      meta:{
+      }
+    },
+   
   ]
 })

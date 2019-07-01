@@ -219,4 +219,4 @@ input{
   import './assets/svgImg'
   6. 在页面使用
   <svg-icon icon-class="test"></svg-icon>
-12
+12 修改第三方ui框架使用 穿透函数不生效问题 在全局css修改
