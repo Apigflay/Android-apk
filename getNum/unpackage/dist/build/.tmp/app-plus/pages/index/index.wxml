@@ -1,0 +1,1 @@
+<view class="content"><view class="text-area"><text data-event-opts="{{[['tap',[['goPhonenum',['$event']]]]]}}" class="title" bindtap="__e">{{title}}</text></view><view data-event-opts="{{[['tap',[['shareMessage',['$event']]]]]}}" class="share_area" bindtap="__e">分享微信</view></view>

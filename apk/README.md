@@ -220,3 +220,5 @@ input{
   6. 在页面使用
   <svg-icon icon-class="test"></svg-icon>
 12 修改第三方ui框架使用 穿透函数不生效问题 在全局css修改
+
+13 vue打包.map文件 去掉  index.js cssSourceMap改为false

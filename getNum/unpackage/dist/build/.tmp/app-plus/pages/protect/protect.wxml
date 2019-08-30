@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['goIndex',['$event']]]]]}}" bindtap="__e">goindex</view>
