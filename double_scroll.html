@@ -1,0 +1,396 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="./swiper.min.css">
+    <script src="./swiper.jquery.js"></script>
+    <script src="./swiper.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.jquery.js"></script>
+
+    <script>
+        var phoneScale = parseInt(window.screen.width)/750;
+        var oMeta = document.createElement('meta');
+        oMeta.charset = 'utf-8';
+        oMeta.name ="viewport";
+        oMeta.content = 'user-scalable=no,width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', 　　target-densitydpi=device-dpi';
+        document.getElementsByTagName('head')[0].appendChild(oMeta);
+    </script>
+    <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 100%;
+            background: rgba(12,4,29,1);
+
+        }
+        .bg_banner{
+            width: 100%;
+            height: 360px;
+            background: red;
+        }
+        .bg_banner img{
+            width: 100%;
+            height: 360px;
+        }
+        .ul_1{
+            height: 80px;
+        }
+        .ul_1 li{
+            float: left;
+            width:375px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-size: 32px;
+            background:rgba(8,148,135,1);
+            box-sizing: border-box;
+        }
+        .ul_1 .ul_1_left{
+            background:rgba(29,230,191,1) ;
+        }
+        .hide{
+            height: 120px;
+            background:rgba(12,4,29,1);
+        }
+        .ul_2{
+            height: 80px;
+            display: none;
+            background:rgba(182,255,241,0.0956);
+        }
+        .ul_2 li{
+            height: 80px;
+            float: left;
+            width: 20%;
+            line-height: 80px;
+            text-align: center;
+            font-size: 28px;
+            box-sizing: border-box;
+            color:#1DE6BF;
+        }
+        .scroll_area{
+            width: 750px;
+            height: 400px;
+            overflow: hidden;
+        }
+        .scroll_area .ul_3{
+            width: 4500px;
+            height: 400px;
+        }
+        .scroll_area .ul_3 li{
+            height: 400px;
+            float: left;
+            width: 750px;
+            line-height: 400px;
+            text-align: center;
+            font-size: 50px;
+            
+        }
+        .scroll_area .ul_3 .swiper-slide1 .padding_list_1{
+            padding-top:80px;
+            width: 726px;
+            height: 500px;
+            background:#302050;
+            /* background:red; */
+            margin:auto;
+        }
+        .scroll_area .ul_3 .swiper-slide1 .padding_list_1 .list_1{
+            float: left;
+            z-index: 3;
+            height: 200px;
+            line-height: 200px;
+            width: 333px;
+            padding: 5px;
+            border-radius: 50px;
+            /* margin-top: 80px; */
+            /* margin-left: 20px; */
+            margin-left: 17px;
+            background: -webkit-linear-gradient( top, #302050 0%, #302050 100%), -webkit-linear-gradient( top, rgba(67,234,255,1) 0%, rgba(234,58,253,1) 100%);
+            background-clip: content-box, padding-box;
+        }
+        .scroll_area .ul_3 .swiper-slide1 .padding_list_1 .list_2{
+
+        }
+        .popup{
+            display: none;
+        }
+        .mask_layer{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="bg_banner">
+            <img src="./img/banner.png" alt="">
+        </div>
+        <ul class="ul_1">
+            <li class="ul_1_left ul_1_click">推荐礼物</li>
+            <li class="ul_1_right ul_1_click" >常规礼物</li>
+        </ul>
+        <div class="hide">
+            <ul class="ul_2">
+                <li class="ul_2_1 click_c" >海洋系</li>
+                <li class="ul_2_2 click_c" >娱乐系</li>
+                <li class="ul_2_3 click_c" >贵宾专属</li>
+                <li class="ul_2_4 click_c" >生日礼物</li>
+                <li class="ul_2_5 click_c" >专区礼物</li>
+            </ul>
+        </div>
+        <div class="scroll_area swiper-container">
+            <ul class="ul_3 swiper-wrapper">
+                <li class="swiper-slide swiper-slide1" >
+                    <div class="padding_list_1">
+                            <div class="list_1">21111111</div>
+                            <div class="list_1 list_2">222222</div>
+                    </div>
+                    
+                </li>
+                <li class="swiper-slide swiper-slide2 " style="background: greenyellow">11111</li>
+                <li class="swiper-slide swiper-slide3 " style="background: purple">22222222</li>
+                <li class="swiper-slide swiper-slide4 " style="background: greenyellow">333</li>
+                <li class="swiper-slide swiper-slide5 " style="background: purple">44444</li>
+                <li class="swiper-slide swiper-slide6 " style="background: purple">5555</li>
+            </ul>
+        </div>
+
+
+        <div class=""></div>
+        <div class="popup" style="width:726px;height:334px;background:red;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;z-index:6777"></div>
+        <div class="mask_layer" style="width:100%;height:100%;background:rgba(0,0,0,.7);position:absolute;top:0;z-index:5"></div>
+    </div>
+</body>
+<script>
+
+var a = 'rock';
+var b =1;
+var c={
+	[a]:b
+}
+console.log(c)
+    $(function(){
+       
+            // 一级目录------
+            // var ul_1_click =$(".ul_1_click"); 
+            $(".ul_1_click").click(function(){
+                // console.log($(this).index());
+                // $(this).css({
+                //     "background":"rgba(29,230,191,1)"
+                // })
+                // $(this).siblings().css({
+                //     "background":"rgba(8,148,135,1)"
+                // })
+                // 
+
+            var _this = this;
+            var distance = $(_this).index()*-750;
+                setTimeout(function(){
+                    
+                    console.log(distance)
+                     $(".ul_3").css({"margin-left":distance});
+                },0)
+
+
+
+                
+
+                
+
+                setTimeout(function(){
+                    getDistance()
+                },0)
+
+
+                // getDistance()
+            })
+
+            // 二级目录------
+            // var click_c =$(".click_c");
+            $(".click_c").click(function(){
+                // console.log($(this).index())
+                
+                var distance = ($(this).index()+1)*-750;
+                // console.log(distance)
+                 setTimeout(function(){
+                    
+                    
+                      $(".ul_3").css({"margin-left":distance});
+                },0)
+                
+               
+
+
+
+                setTimeout(function(){
+                    getDistance()
+                },0)
+            
+            })
+            
+        // 点击时---end----
+        // 滑动时------
+        var mySwiper = new Swiper('.swiper-container', {
+            //可选选项，自动滑动
+        })
+        setInterval(function(){
+            // var X = $(".ul_3").offset().left;
+            // console.log(X);
+            // if(X==0){
+            //     $(".ul_1_left").css({
+            //         "background":"rgba(29,230,191,1)"
+            //     })
+            //     $(".ul_1_right").css({
+            //         "background":"rgba(8,148,135,1)"
+            //     })
+            //     $(".ul_2").hide();
+            // }else if(X<=-750){
+            //     $(".ul_1_right").css({
+            //         "background":"rgba(29,230,191,1)"
+            //     })
+            //     $(".ul_1_left").css({
+            //         "background":"rgba(8,148,135,1)"
+            //     })
+            //     $(".ul_2").show();
+            // }
+
+            // if(X==-750){
+            //     $(".ul_2_1").css({
+            //         "color":"#1DE6BF"
+            //     })
+            //     $(".ul_2_1").siblings().css({
+            //         "color":"#8D73D1"
+            //     })
+            // }else if(X==-1500){
+            //     $(".ul_2_2").css({
+            //         "color":"#1DE6BF"
+            //     })
+            //     $(".ul_2_2").siblings().css({
+            //         "color":"#8D73D1"
+            //     })
+            // }
+            // else if(X==-2250){
+            //     $(".ul_2_3").css({
+            //         "color":"#1DE6BF"
+            //     })
+            //     $(".ul_2_3").siblings().css({
+            //         "color":"#8D73D1"
+            //     })
+            // }
+            // else if(X==-3000){
+            //     $(".ul_2_4").css({
+            //         "color":"#1DE6BF"
+            //     })
+            //     $(".ul_2_4").siblings().css({
+            //         "color":"#8D73D1"
+            //     })
+            // }
+            // else if(X==-3750){
+            //     $(".ul_2_5").css({
+            //         "color":"#1DE6BF"
+            //     })
+            //     $(".ul_2_5").siblings().css({
+            //         "color":"#8D73D1"
+            //     })
+            // }
+            getDistance()
+
+        },100);
+
+
+
+
+
+
+        // --详情
+        $(".list_1").click(function(){
+            $(".popup").show();
+            $(".mask_layer").show();
+        })
+        $(".popup").click(function(){
+            $(".popup").hide();
+            $(".mask_layer").hide();
+        })
+        // 滑动时----
+        // 
+}
+// 运动计算start---------------------
+        function getDistance(){
+            var distance =$(".ul_3").offset().left;
+            // console.log(distance);
+            if(distance==0){
+                $(".ul_1_left").css({
+                    "background":"rgba(29,230,191,1)"
+                })
+                $(".ul_1_right").css({
+                    "background":"rgba(8,148,135,1)"
+                })
+                $(".ul_2").hide();
+            }else if(distance==-750){
+                 $(".ul_1_right").css({
+                    "background":"rgba(29,230,191,1)"
+                })
+                $(".ul_1_left").css({
+                    "background":"rgba(8,148,135,1)"
+                })
+                $(".ul_2").show();
+                // ------------------
+                $(".ul_2_1").css({
+                    "color":"#1DE6BF"
+                })
+                $(".ul_2_1").siblings().css({
+                    "color":"#8D73D1"
+                })
+            }else if(distance==-1500){
+                 $(".ul_2_2").css({
+                    "color":"#1DE6BF"
+                })
+                $(".ul_2_2").siblings().css({
+                    "color":"#8D73D1"
+                })
+            }else if(distance==-2250){
+                 $(".ul_2_3").css({
+                    "color":"#1DE6BF"
+                })
+                $(".ul_2_3").siblings().css({
+                    "color":"#8D73D1"
+                })
+            }else if(distance==-3000){
+                 $(".ul_2_4").css({
+                    "color":"#1DE6BF"
+                })
+                $(".ul_2_4").siblings().css({
+                    "color":"#8D73D1"
+                })
+            }else if(distance==-3750){
+                 $(".ul_2_5").css({
+                    "color":"#1DE6BF"
+                })
+                $(".ul_2_5").siblings().css({
+                    "color":"#8D73D1"
+                })
+            }
+        }
+// 运动计算start---------------------
+    })
+</script>
+</html>
+
+
+
+
+
+
+
+
+
